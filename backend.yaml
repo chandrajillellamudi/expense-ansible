@@ -69,11 +69,11 @@
        state: import
        name: all
 
+   - name: daemon reload
+     ansible.builtin.command: "systemctl daemon-reload"
 
-  #  - name: load schema
-
-  #  - name: start backend service
-  #    ansible.builtin.systemd:
-  #      name: backend
-  #      state: started
-  #      enabled: yes
+   - name: start backend service
+     ansible.builtin.service:
+      name: backend
+      state: started
+      enabled: yes
