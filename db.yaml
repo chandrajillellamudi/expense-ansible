@@ -3,6 +3,10 @@
   become: yes
   vars:
     login_host: db.chandradevops.online
+  vars_prompt:
+    - name: "PASSWORD"
+      prompt: "Enter the MySQL root password"
+      private: no
   tasks:
 
     - name: install mysql server
@@ -32,3 +36,6 @@
         - cryptography
         executable: pip3.9
 
+    - name: password setup
+      ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ PASSWORD }}"
+     
