@@ -39,4 +39,16 @@
      ansible.builtin.command: "npm install"
      args:
       chdir: /app 
-     
+
+   - name: copy backend service file
+     ansible.builtin.copy:
+       src: backend.service
+       dest: /etc/systemd/system/backend.service
+
+   - name: load schema
+
+   - name: start backend service
+     ansible.builtin.systemd:
+       name: backend
+       state: started
+       enabled: yes
