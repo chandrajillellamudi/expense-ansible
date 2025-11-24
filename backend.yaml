@@ -2,6 +2,11 @@
   hosts: backend
   become: yes
   vars:
+   lohin_host: db.chandradevops.online
+  vars_prompt:
+    - name: "PASSWORD"
+      prompt: "Enter the MySQL root password"
+      private: no
 
   tasks:
    - name: disable nodejs module
@@ -44,6 +49,23 @@
      ansible.builtin.copy:
        src: backend.service
        dest: /etc/systemd/system/backend.service
+
+   - name: installing python mysql dependencies
+     ansible.builtin.pip:
+       name: 
+        - PyMySQL
+        - cryptography
+       executable: pip3.9
+
+   - name: import data into mysql
+     community.mysql.mysql_db:
+       login_host: "{{ lohin_host }}"
+       login_user: root
+       login_password: "{{ PASSWORD }}"
+       target: /app/db/expense.sql
+       state: import
+       name: all
+       
 
   #  - name: load schema
 
