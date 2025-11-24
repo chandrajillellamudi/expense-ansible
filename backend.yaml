@@ -62,10 +62,10 @@
        login_host: "{{ lohin_host }}"
        login_user: root
        login_password: "{{ PASSWORD }}"
-       target: /app/db/expense.sql
+       target: /app/schema/backend.sql
        state: import
        name: all
-       
+
 
   #  - name: load schema
 
