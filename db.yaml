@@ -30,5 +30,5 @@
         name: 
         - PyMySQL
         - cryptography
-      executable: pip3.9
-      when: mysql_connection_info is failed
+        executable: pip3.9
+
