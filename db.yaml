@@ -21,6 +21,6 @@
         login_host: "{{ login_host }}"
         login_user: root
         login_password: ExpenseApp@1
+        filter: version
       register: mysql_connection_info
-      filter: version
       ignore_errors: yes
