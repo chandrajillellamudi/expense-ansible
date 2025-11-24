@@ -45,10 +45,10 @@
        src: backend.service
        dest: /etc/systemd/system/backend.service
 
-   - name: load schema
+  #  - name: load schema
 
-   - name: start backend service
-     ansible.builtin.systemd:
-       name: backend
-       state: started
-       enabled: yes
+  #  - name: start backend service
+  #    ansible.builtin.systemd:
+  #      name: backend
+  #      state: started
+  #      enabled: yes
