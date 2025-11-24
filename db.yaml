@@ -24,3 +24,11 @@
         filter: version
       register: mysql_connection_info
       ignore_errors: yes
+
+    - name: installing python mysql dependencies
+      ansible.builtin.pip:
+        name: 
+        - PyMySQL
+        - cryptography
+      executable: pip3.9
+      when: mysql_connection_info is failed
