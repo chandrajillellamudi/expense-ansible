@@ -17,10 +17,11 @@
 
    - name: install nodejs
      ansible.builtin.dnf:
-       loop:
+      name: "{{ item }}"
+      state: present
+      loop:
         - nodejs
         - mysql 
-       state: present
 
    - name: cerate user for backend app
      ansible.builtin.user:
